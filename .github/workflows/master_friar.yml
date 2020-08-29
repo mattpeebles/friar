@@ -32,4 +32,4 @@ jobs:
         app-name: 'friar'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_ede5dfa5a3c54609b45f09a179c7fc1f }}
-        package: .
+        package: ./build

@@ -3,7 +3,19 @@ import logo from './logo.svg';
 import Date from "./components/calendar/date/date";
 import './App.scss';
 
-function App() {
+function App()
+{
+  const finnhub = require('finnhub');
+
+  const api_key = finnhub.ApiClient.instance.authentications['api_key'];
+  api_key.apiKey = process.env.REACT_APP_FINNHUB_API_KEY;
+  const finnhubClient = new finnhub.DefaultApi();
+  
+  finnhubClient.companyBasicFinancials("AAPL", "margin", (error: any, data: any, response: any) =>
+  {
+    console.log(data)
+  });
+
   return (
     <div className="App">
       <header className="App-header">
