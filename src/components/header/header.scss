@@ -1,0 +1,21 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    height: 45px;
+    align-items: center;
+    padding: 0px 15px;
+    
+    .logo
+    {
+        
+    }
+
+    .gutter{
+        flex-grow: 1;
+    }
+
+    .search
+    {
+
+    }
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
+import Header from "./components/header/header";
 import Date from "./components/calendar/date/date";
 import './App.scss';
 
@@ -18,12 +19,12 @@ function App()
 
   return (
     <div className="App">
+      <Header></Header>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <Date></Date>
         <a
           className="App-link"
           href="https://reactjs.org"
