@@ -25,6 +25,7 @@ jobs:
         npm install
         npm run build --if-present
         npm run test --if-present
+    - name: Upload build result
       uses: actions/upload-artifact@v2
       with:
         name: build
