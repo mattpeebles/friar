@@ -1,0 +1,4 @@
+interface IDateListProps
+{
+    Dates: IDate[]
+}

@@ -1,0 +1,4 @@
+interface IDate
+{
+    Date: Date;
+}

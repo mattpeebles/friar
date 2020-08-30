@@ -1,6 +1,8 @@
 import React from "react";
 import logo from '../logo.svg';
 import Header from "../components/header/header";
+import DateList from "../components/calendar/date_list/datelist";
+import Ticker from "../components/ticker_info/ticker/ticker";
 
 import "./Home.scss";
 export default class Home extends React.Component
@@ -21,20 +23,25 @@ export default class Home extends React.Component
         return (
             <div className="App">
                 <Header></Header>
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <p>
-                        Edit <code>src/App.js</code> and save to reload.
+                <div className="friar-body">
+                     <DateList Dates={[]}></DateList>
+
+                    <header className="App-header">
+                        <img src={logo} className="App-logo" alt="logo" />
+                        <p>
+                            Edit <code>src/App.js</code> and save to reload.
                     </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Learn React
+                        <a
+                            className="App-link"
+                            href="https://reactjs.org"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Learn React
                     </a>
-                </header>
+                    </header>
+                    <Ticker Symbol="Work"></Ticker>
+                </div>
             </div>
         );
     }
