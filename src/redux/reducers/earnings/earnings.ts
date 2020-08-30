@@ -1,23 +1,23 @@
-import { ADD_EARNINGS_BY_DATE } from "../actionTypes";
+import { ADD_EARNINGS_BY_DATE, EarningsActions } from "./types";
 
 const initialState: EarningsReducerState = {
     EarningsByDate: {}
 };
 
-export default function (state = initialState, action: { type: any; payload: any; })
+export default function (state = initialState, action: EarningsActions)
 {
     switch (action.type)
     {
         case ADD_EARNINGS_BY_DATE: {
-            const { date, content } : { date: Date, content: any}= action.payload;
+            const { date, content } = action.payload;
 
 
             let updatedState: EarningsReducerState = {
                 EarningsByDate: {
                     ...state.EarningsByDate,
                     [date.toISOString()]: {
-                        Earnings: content as IEarningsCalendarApiResponse,
-                        EarningsCount: (content as IEarningsCalendarApiResponse)?.earningsCalendar?.length ?? 0
+                        Earnings: content,
+                        EarningsCount: content?.earningsCalendar?.length ?? 0
                     }
                 }
             }

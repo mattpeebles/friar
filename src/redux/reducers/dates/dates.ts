@@ -1,18 +1,18 @@
-import { SELECT_DATE } from "../actionTypes";
+import { DateActions, SELECT_DATE,  } from "./types";
 
 const initialState: DateReducerState = {
     selectedDate: undefined
 };
 
-export default function (state = initialState, action: { type: any; payload: { id: any; content: any; }; })
+export default function (state = initialState, action: DateActions)
 {
     switch (action.type)
     {
         case SELECT_DATE: {
-            const { content } = action.payload;
-            
+            const { date } = action.payload;
+
             let updatedState: DateReducerState = {
-                selectedDate: content
+                selectedDate: date
             }
 
             return updatedState;

@@ -1,3 +1,0 @@
-export const SELECT_DATE = "SELECT_DATE";
-
-export const ADD_EARNINGS_BY_DATE = "ADD_EARNINGS_BY_DATE";
