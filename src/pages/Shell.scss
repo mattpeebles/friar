@@ -1,6 +1,12 @@
 #shell {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 
     #shell-body {
         padding: 0px 175px;
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
     }
 }

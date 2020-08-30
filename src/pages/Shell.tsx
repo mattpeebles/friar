@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../components/header/header";
-
 import "./Shell.scss";
 
 export default class Shell extends React.Component
