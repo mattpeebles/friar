@@ -1,11 +1,10 @@
 import React from "react";
 import logo from '../logo.svg';
-import Header from "../components/header/header";
 import DateList from "../components/calendar/date_list/datelist";
 import Ticker from "../components/ticker_info/ticker/ticker";
 
-import "./Home.scss";
-export default class Home extends React.Component
+import "./Calendar.scss";
+export default class Calendar extends React.Component
 {
     constructor(props: any)
     {
@@ -31,12 +30,11 @@ export default class Home extends React.Component
     {
 
         let today = new Date();
-        let dateRange = [...Array(7).keys()].map((_, index) => ({ Date: this.addDays(today, (30 + index)), key: index.toString()} as IDate) );
+        let dateRange = [...Array(7).keys()].map((_, index) => ({ Date: this.addDays(today, (0 + index)), key: index.toString()} as IDate) );
         return (
             <div className="App">
-                <Header></Header>
+                <DateList Dates={dateRange}></DateList>
                 <div className="friar-body">
-                    <DateList Dates={dateRange}></DateList>
                     <header className="App-header">
                         <img src={logo} className="App-logo" alt="logo" />
                         <p>

@@ -1,14 +1,18 @@
 import React from 'react';
-import Home from "./pages/Home";
+import Calendar from "./pages/Calendar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Shell from "./pages/Shell";
+
 
 function App()
 {
   return (
     <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
-      </Switch>
+        <Shell>
+            <Switch>
+              <Route exact path="/" component={Calendar} />
+            </Switch>
+        </Shell>
     </Router>
   );
 }

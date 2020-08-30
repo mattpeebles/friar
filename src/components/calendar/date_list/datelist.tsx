@@ -17,8 +17,7 @@ export default class DateList extends React.Component
         const { Dates } = this.props;
 
         return (
-            <div>
-                <DateComponent Date={new Date()} key="today"></DateComponent>
+            <div className="calendar">
                 {Dates.map(date => <DateComponent Date={date.Date} key={date.key}></DateComponent>)}
             </div>);
     }
