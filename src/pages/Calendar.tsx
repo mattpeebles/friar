@@ -2,9 +2,10 @@ import React from "react";
 import logo from '../logo.svg';
 import DateList from "../components/calendar/date_list/datelist";
 import Ticker from "../components/ticker_info/ticker/ticker";
-
+import { connect } from 'react-redux'
 import "./Calendar.scss";
-export default class Calendar extends React.Component
+
+class Calendar extends React.Component
 {
     constructor(props: any)
     {
@@ -20,17 +21,11 @@ export default class Calendar extends React.Component
         return copy
     }
 
-    async componentDidMount()
-    {
-
-
-    }
-
     render()
     {
 
         let today = new Date();
-        let dateRange = [...Array(7).keys()].map((_, index) => ({ Date: this.addDays(today, (0 + index)), key: index.toString()} as IDate) );
+        let dateRange = [...Array(7).keys()].map((_, index) => ({ Date: this.addDays(today, (0 + index)), key: index.toString() } as IDate));
         return (
             <div className="App">
                 <DateList Dates={dateRange}></DateList>
@@ -55,3 +50,9 @@ export default class Calendar extends React.Component
         );
     }
 }
+
+
+export default connect(
+    null,
+    {}
+)(Calendar);
