@@ -19,6 +19,7 @@ export default class DateList extends React.Component
         return (
             <div>
                 <DateComponent Date={new Date()}></DateComponent>
+                {Dates.map(date => <DateComponent Date={date.Date}></DateComponent>)}
             </div>);
     }
 }
