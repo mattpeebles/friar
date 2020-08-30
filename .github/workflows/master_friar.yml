@@ -32,7 +32,6 @@ jobs:
         path: ./build
 
   deploy:
-      name: "Deploy"
       needs: build
       runs-on: ubuntu-latest
       steps:  
@@ -43,7 +42,6 @@ jobs:
         - name: 'Deploy to Azure Web App'
           uses: azure/webapps-deploy@v2
           with:
-            name: build
             app-name: 'friar'
             slot-name: 'production'
             publish-profile: ${{ secrets.AzureAppService_PublishProfile_ede5dfa5a3c54609b45f09a179c7fc1f }}
