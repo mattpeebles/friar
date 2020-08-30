@@ -1,4 +1,4 @@
 interface IDateListProps
 {
-    Dates: IDate[]
+    Dates: IDateComponentProps[]
 }

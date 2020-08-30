@@ -2,7 +2,7 @@ import React from "react";
 import DateComponent from "../date/date";
 import "./DateList.scss";
 
-export default class DateList extends React.Component  
+export default class DateList extends React.Component
 {
     constructor(props: IDateListProps)
     {

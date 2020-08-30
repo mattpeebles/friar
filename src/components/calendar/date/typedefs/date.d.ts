@@ -1,4 +1,4 @@
-interface IDate
+interface IDateComponentProps
 {
     Date: Date;
     key: string;

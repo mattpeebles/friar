@@ -1,0 +1,4 @@
+interface DateReducerState
+{
+    selectedDate?: Date;
+}

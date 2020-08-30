@@ -25,7 +25,7 @@ class Calendar extends React.Component
     {
 
         let today = new Date();
-        let dateRange = [...Array(7).keys()].map((_, index) => ({ Date: this.addDays(today, (0 + index)), key: index.toString() } as IDate));
+        let dateRange = [...Array(7).keys()].map((_, index) => ({ Date: this.addDays(today, (0 + index)), key: index.toString() } as IDateComponentProps));
         return (
             <div className="App">
                 <DateList Dates={dateRange}></DateList>
