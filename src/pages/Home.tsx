@@ -7,25 +7,36 @@ import Ticker from "../components/ticker_info/ticker/ticker";
 import "./Home.scss";
 export default class Home extends React.Component
 {
+    constructor(props: any)
+    {
+        super(props);
+        this.state = {};
+    }
+
+
+    private addDays(date: Date, days: number): Date 
+    {
+        const copy = new Date(Number(date))
+        copy.setDate(date.getDate() + days)
+        return copy
+    }
+
+    async componentDidMount()
+    {
+
+
+    }
+
     render()
     {
-        const finnhub = require('finnhub');
 
-        const api_key = finnhub.ApiClient.instance.authentications['api_key'];
-        api_key.apiKey = process.env.REACT_APP_FINNHUB_API_KEY;
-        const finnhubClient = new finnhub.DefaultApi();
-
-        finnhubClient.companyBasicFinancials("AAPL", "margin", (error: any, data: any, response: any) =>
-        {
-            console.log(data)
-        });
-
+        let today = new Date();
+        let dateRange = [...Array(7).keys()].map((_, index) => ({ Date: this.addDays(today, (30 + index)), key: index.toString()} as IDate) );
         return (
             <div className="App">
                 <Header></Header>
                 <div className="friar-body">
-                     <DateList Dates={[]}></DateList>
-
+                    <DateList Dates={dateRange}></DateList>
                     <header className="App-header">
                         <img src={logo} className="App-logo" alt="logo" />
                         <p>
