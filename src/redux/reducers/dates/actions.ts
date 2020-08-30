@@ -1,8 +1,8 @@
-import { SELECT_DATE } from "./types";
+import { SELECT_DATE, DateActions } from "./types";
 
-export const selectDate = (content: Date) => ({
+export const selectDate = (date: Date): DateActions => ({
     type: SELECT_DATE,
     payload: {
-        content
+        date
     }
 })

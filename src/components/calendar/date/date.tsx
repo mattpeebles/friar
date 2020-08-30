@@ -2,8 +2,10 @@ import React from "react";
 import Earnings from "../../../data/EarningsService";
 import { connect, ConnectedProps } from 'react-redux'
 import { selectDate, addEarningsByDate } from "../../../redux/actions";
+import "./date.scss";
 
-const mapState = (state: RootState, ownProps: IDateComponentProps ) =>
+
+const mapState = (state: RootState, ownProps: IDateComponentProps) =>
 {
     let earnings = state?.earnings.EarningsByDate[ownProps.Date.toISOString()];
     return { earnings: earnings?.Earnings, earningsCount: earnings?.EarningsCount }
@@ -37,14 +39,18 @@ class DateComponent extends React.Component<Props, any>
 
     }
 
+    handleSelectDate = () =>
+    {
+        this.props.selectDate(this.props.Date);
+    };
+
+
     render()
     {
         let { Date: CompDate } = this.props;
 
-        console.log(this.props)
-
         return (
-            <div className="date-container">
+            <div className="date-container" onClick={this.handleSelectDate}>
                 <div className="date">{CompDate.toDateString()}</div>
                 <div className="earnings-count">{this.props.earningsCount} er</div>
             </div>

@@ -1,7 +1,7 @@
 import React from "react";
-import logo from '../logo.svg';
 import DateList from "../components/calendar/date_list/datelist";
 import Ticker from "../components/ticker_info/ticker/ticker";
+import EarningsList from "../components/earnings_list/EarningsList";
 import { connect } from 'react-redux'
 import "./Calendar.scss";
 
@@ -30,20 +30,7 @@ class Calendar extends React.Component
             <div className="App">
                 <DateList Dates={dateRange}></DateList>
                 <div className="friar-body">
-                    <header className="App-header">
-                        <img src={logo} className="App-logo" alt="logo" />
-                        <p>
-                            Edit <code>src/App.js</code> and save to reload.
-                    </p>
-                        <a
-                            className="App-link"
-                            href="https://reactjs.org"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Learn React
-                    </a>
-                    </header>
+                    <EarningsList />
                     <Ticker Symbol="Work"></Ticker>
                 </div>
             </div>
