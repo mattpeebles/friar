@@ -17,7 +17,7 @@ export default function (state = initialState, action: EarningsActions)
                     ...state.EarningsByDate,
                     [date.toISOString()]: {
                         Earnings: content,
-                        EarningsCount: content?.earningsCalendar?.length ?? 0
+                        EarningsCount: content?.length ?? 0
                     }
                 }
             }

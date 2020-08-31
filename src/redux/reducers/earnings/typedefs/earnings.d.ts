@@ -5,6 +5,6 @@ interface EarningsReducerState
 
 interface EarningsInfo
 {
-    Earnings: IEarningsCalendarApiResponse;
+    Earnings: IEarning[];
     EarningsCount: number;
 }

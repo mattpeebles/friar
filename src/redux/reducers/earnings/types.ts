@@ -9,6 +9,6 @@ export interface AddEarningsActions
 }
 
 export interface IEarningsActionsPayload
-{ date: Date, content: IEarningsCalendarApiResponse }
+{ date: Date, content: IEarning[] }
 
 export type EarningsActions = AddEarningsActions;

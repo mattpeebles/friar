@@ -1,28 +1,33 @@
+import { connect, ConnectedProps } from 'react-redux'
 import React from "react";
 import "./ticker.scss";
 
-export default class Ticker extends React.Component
+const mapState = (state: RootState, ownProps: ITickerProps) =>
 {
-    constructor(props: ITickerProps)
-    {
-        super(props);
-        this.props = props;
-    }
-
-    props: ITickerProps;
+    return { SelectedStock: state.stocks.SelectedStock ?? "" }
+}
 
 
+const mapDispatch = {}
+
+const connector = connect(mapState, mapDispatch)
+
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+type Props = ITickerProps & PropsFromRedux;
+
+class Ticker extends React.Component<Props, any>
+{
     render()
     {
-        const { Symbol } = this.props;
-
-
         return (
             <div className="ticker-container">
                 <div className="ticker-header">
-                    {Symbol}
+                    {this.props.SelectedStock}
                 </div>
             </div>
         );
     }
 }
+
+export default connector(Ticker);

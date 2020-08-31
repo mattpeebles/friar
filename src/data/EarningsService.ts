@@ -1,18 +1,32 @@
-import finnhubClient from "./finnhub/FinnHubClient"
+import fApi from "./finnhub/FinnhubApiService"
+
 export default class Api
 {
-    public static async getEarningsByDateAsync(date: Date): Promise<IEarningsCalendarApiResponse>
+    public static async getEarningsByDateAsync(date: Date): Promise<IEarning[]>
     {
-        return new Promise((resolve, reject) =>
-        {
-            //find a better way to do this. ugh
-            let sDate = date.toISOString().split('T')[0];
+        const apiResponse = await fApi.getEarningsByDateAsync(date);
+        return this.TranslateERCalendarResponse(apiResponse);
+    }
 
-            finnhubClient.earningsCalendar({ "from": sDate, "to": sDate }, (error: any, data: any, response: any) =>
-            {
-                //need to handle 429 errors
-                resolve(data);
-            });
-        })
+    private static TranslateERCalendarResponse(erResponse: IEarningsCalendarApiResponse): IEarning[]
+    {
+        return erResponse.earningsCalendar.map(this.TranslateEarning);
+    }
+
+    private static TranslateEarning(earning: IFinnhubEarning): IEarning
+    {
+        let result : IEarning = {
+            date: earning.date,
+            epsActual: earning.epsActual,
+            epsEstimate: earning.epsEstimate,
+            hour: earning.hour,
+            quarter: earning.quarter,
+            revenueActual: earning.revenueActual,
+            revenueEstimate: earning.revenueEstimate,
+            Symbol: earning.symbol,
+            year: earning.year
+        };
+
+        return result;
     }
 }

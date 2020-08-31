@@ -1,0 +1,4 @@
+interface StockReducerState
+{
+    SelectedStock: string;
+}
