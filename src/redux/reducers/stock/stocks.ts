@@ -1,7 +1,8 @@
-import { SELECTED_STOCK, StockAction } from "./types";
+import { SELECTED_STOCK, ADD_COMPANY_INFO, StockAction } from "./types";
 
 const initialState: StockReducerState = {
-    SelectedStock: ""
+    SelectedStock: "",
+    CompanyMap: {}
 };
 
 export default function (state = initialState, action: StockAction)
@@ -11,9 +12,23 @@ export default function (state = initialState, action: StockAction)
         case SELECTED_STOCK: {
             const { symbol } = action.payload;
 
+            let updatedState: StockReducerState = {
+                ...state,
+                SelectedStock: symbol
+            }
+
+            return updatedState;
+        }
+
+        case ADD_COMPANY_INFO: {
+            const { symbol, info } = action.payload;
 
             let updatedState: StockReducerState = {
-                SelectedStock: symbol
+                ...state, 
+                CompanyMap: {
+                    ...state.CompanyMap,
+                    [symbol]: info
+                }
             }
 
             return updatedState;

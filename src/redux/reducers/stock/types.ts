@@ -1,5 +1,5 @@
 export const SELECTED_STOCK = "SELECTED_STOCK";
-
+export const ADD_COMPANY_INFO = "ADD_COMPANY_INFO"
 
 export interface SelectedStockAction
 {
@@ -8,7 +8,19 @@ export interface SelectedStockAction
 
 }
 
+export interface AddCompanyInfo
+{
+    type: typeof ADD_COMPANY_INFO,
+    payload: IAddCompanyInfoPayload
+}
+
 export interface ISelectedStockPayload
 { symbol: string }
 
-export type StockAction = SelectedStockAction;
+export interface IAddCompanyInfoPayload
+{
+    symbol: string;
+    info: ICompanyInfo;
+}
+
+export type StockAction = SelectedStockAction | AddCompanyInfo;

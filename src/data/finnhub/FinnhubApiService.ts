@@ -16,4 +16,14 @@ export default class Api
             });
         })
     }
+
+    public static async getCompanyInfoBySymbol(symbol: string): Promise<IFinnhubCompanyInfo>
+    {
+        return new Promise((resolve, reject) =>
+        {
+            finnhubClient.companyProfile2({'symbol': symbol}, (error: any, data: IFinnhubCompanyInfo, response: any) => {
+                resolve(data);
+            });
+        })
+    }
 }
