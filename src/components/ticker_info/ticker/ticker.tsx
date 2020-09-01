@@ -35,14 +35,13 @@ class Ticker extends React.Component<Props, any>
         }
     }
 
-
     render()
     {
         return (
             <div className="ticker-container">
-                <div className="ticker-header">
-                    {this.props.SelectedStock}
-                    {this.props.CompanyInfo?.name}
+                <div className="ticker-header-container">
+                  <div className="ticker-symbol">{this.props.SelectedStock}</div> 
+                    <div className="ticker-name">{this.props.CompanyInfo?.name}</div>
                 </div>
             </div>
         );

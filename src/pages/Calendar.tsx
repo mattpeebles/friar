@@ -2,6 +2,7 @@ import React from "react";
 import DateList from "../components/calendar/date_list/datelist";
 import Ticker from "../components/ticker_info/ticker/ticker";
 import EarningsList from "../components/earnings_list/EarningsList";
+import Gutter from "../components/gutter/gutter";
 import { connect } from 'react-redux'
 import "./Calendar.scss";
 
@@ -31,6 +32,7 @@ class Calendar extends React.Component
                 <DateList Dates={dateRange}></DateList>
                 <div className="friar-body">
                     <EarningsList />
+                    <Gutter height="auto" width="10%" minwidth="30px"/>
                     <Ticker Symbol="Work"></Ticker>
                 </div>
             </div>
