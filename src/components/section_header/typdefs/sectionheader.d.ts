@@ -1,0 +1,4 @@
+interface ISectionHeaderProps
+{
+    Title: string;
+}

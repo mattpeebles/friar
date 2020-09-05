@@ -21,7 +21,7 @@ export default class Api
             phone: info.phone,
             shareOutstanding: info.shareOutstanding,
             ticker: info.ticker,
-            weburl: info.weburl
+            weburl: info.weburl,
         };
 
         return result;

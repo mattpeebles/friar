@@ -1,0 +1,10 @@
+.g-container 
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    &>*:nth-child(4n + 1) {
+        margin-left: 0;
+    }
+}

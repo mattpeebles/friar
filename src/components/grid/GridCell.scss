@@ -1,0 +1,13 @@
+.gc-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    flex-basis: calc(25% - 12px);
+    margin: 0px 6px 12px;
+    
+    .gc-title {
+        font-weight: 700px;
+    }
+
+    .gc-value {}
+}

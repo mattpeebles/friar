@@ -1,0 +1,15 @@
+.ci-container {
+    display: flex;
+    flex-direction: column;
+
+    .ci-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        &>*:nth-child(4n + 1) {
+            margin-left: 0;
+        }
+
+    }
+}

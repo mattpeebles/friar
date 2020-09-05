@@ -4,6 +4,7 @@ import cApi from "../../../data/CompanyService";
 import { addCompanyInfo } from "../../../redux/actions";
 
 import "./ticker.scss";
+import CompanyInfo from '../../company_info/CompanyInfo';
 
 const mapState = (state: RootState, ownProps: ITickerProps) =>
 {
@@ -40,8 +41,16 @@ class Ticker extends React.Component<Props, any>
         return (
             <div className="ticker-container">
                 <div className="ticker-header-container">
-                  <div className="ticker-symbol">{this.props.SelectedStock}</div> 
+                    <div className="ticker-symbol">{this.props.SelectedStock}</div>
                     <div className="ticker-name">{this.props.CompanyInfo?.name}</div>
+                </div>
+                
+                <div className="ticker-body">
+                    <div className="ticker-company-info-container">
+                        {this.props.CompanyInfo !== null && this.props.CompanyInfo !== undefined &&
+                            <CompanyInfo CompanyInfo={this.props.CompanyInfo} />
+                        }
+                    </div>
                 </div>
             </div>
         );

@@ -11,4 +11,13 @@ interface ICompanyInfo
    ticker: string;
    weburl: string;
    logo: string;
+   
+   description?: string;
+   ceo?: string;
+   employeeCount?: number;
+   headquarters?: string;
+   founded?: Date;
+   peRatio?: number;
+   dividendYield?: number;
+   avgVol?: number;
 }
