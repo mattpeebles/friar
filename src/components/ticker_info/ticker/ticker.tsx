@@ -36,16 +36,28 @@ class Ticker extends React.Component<Props, any>
         }
     }
 
+    handleButtonClick()
+    {
+
+    }
+
     render()
     {
+        if(this.props.SelectedStock.IsNullOrEmpty()){
+            return (<div></div>);
+        }
+
         return (
             <div className="ticker-container">
                 <div className="ticker-header-container">
                     <div className="ticker-symbol">{this.props.SelectedStock}</div>
                     <div className="ticker-name">{this.props.CompanyInfo?.name}</div>
                 </div>
-                
+
                 <div className="ticker-body">
+                    <a href={`https://robinhood.com/stocks/${this.props.SelectedStock}`} target="_blank" rel="noreferrer noopener">Robinhood</a>
+                    <a href={`https://finance.yahoo.com/quote/${this.props.SelectedStock}`} target="_blank" rel="noreferrer noopener">YahooFinance</a>
+
                     <div className="ticker-company-info-container">
                         {this.props.CompanyInfo !== null && this.props.CompanyInfo !== undefined &&
                             <CompanyInfo CompanyInfo={this.props.CompanyInfo} />

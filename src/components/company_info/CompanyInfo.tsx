@@ -35,7 +35,7 @@ class CompanyInfo extends React.Component<Props, any>
         let gridInfo: IGridProps = {
             Data: [
                 {
-                    Cell: { Title: "Ceo", Value: info.ceo },
+                    Cell: { Title: "CEO", Value: info.ceo },
                     SortOrder: 0
                 },
                 {
