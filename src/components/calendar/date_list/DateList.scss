@@ -4,4 +4,8 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 15px;
+
+    &:first-child(){
+        margin-left: 0;
+    }
 }

@@ -6,4 +6,8 @@ String.prototype.IsNullOrEmpty = function (this: string)
 }
 
 
-export {};
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
+
+
+
+export { months };

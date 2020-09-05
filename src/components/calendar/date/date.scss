@@ -1,3 +1,24 @@
-.date-container {
+.da-container {
     cursor: pointer;
+    width: calc(100% - 15px);
+    margin: 0px 6px 12px;
+    border: 1px solid;
+    padding: 2px;
+
+    &.selected {
+        border: 2px solid yellow;
+    }
+
+    .da-row {
+        display: flex;
+        flex-direction: row;
+        text-align: left;
+
+
+        .da-day {
+            flex-grow: 1;
+            font-size: 18px;
+            font-weight: 500;
+        }
+    }
 }

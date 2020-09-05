@@ -2,13 +2,22 @@ import React from "react";
 import Earnings from "../../../data/EarningsService";
 import { connect, ConnectedProps } from 'react-redux'
 import { selectDate, addEarningsByDate } from "../../../redux/actions";
+import {months } from "../../../utils/FriarExtensions";
 import "./date.scss";
 
 
 const mapState = (state: RootState, ownProps: IDateComponentProps) =>
 {
     let earnings = state?.earnings.EarningsByDate[ownProps.Date.toISOString()];
-    return { earnings: earnings?.Earnings, earningsCount: earnings?.EarningsCount }
+    return {
+        IsSelected: ownProps.Date === state.dates.selectedDate,
+        Earnings: earnings?.Earnings,
+        EarningsCount: earnings?.EarningsCount,
+        Day: ownProps.Date.getDate(),
+        Month: ownProps.Date.getMonth(),
+        Year: ownProps.Date.getFullYear(),
+        DayOfWeek: ownProps.Date.getDay()
+    }
 }
 
 
@@ -31,7 +40,7 @@ class DateComponent extends React.Component<Props, any>
 {
     async componentDidMount()
     {
-        if (this.props.earnings === null || this.props.earnings === undefined)
+        if (this.props.Earnings === null || this.props.Earnings === undefined)
         {
             let retrievedEarnings = (await Earnings.getEarningsByDateAsync(this.props.Date));
             this.props.addEarningsByDate(this.props.Date, retrievedEarnings);
@@ -47,17 +56,26 @@ class DateComponent extends React.Component<Props, any>
 
     render()
     {
-        let { Date: CompDate } = this.props;
-
         return (
-            <div className="date-container" onClick={this.handleSelectDate}>
-                <div className="date">{CompDate.toDateString()}</div>
-                <div className="earnings-count">{this.props.earningsCount} er</div>
+            <div className={`da-container${this.props.IsSelected ? " selected": ""}`} onClick={this.handleSelectDate}>
+                <div className="da-row">
+                    <div className="da-day">
+                        {this.props.Day}
+                    </div>
+                    {this.props.ShowMonth &&
+                        <div className="da-month">
+                            {months[this.props.Month]}
+                        </div>
+                    }
+                </div>
+                <div className="da-row">
+                    <div className="earnings-count">{this.props.EarningsCount} earnings</div>
+                </div>
             </div>
 
         )
     }
-}
 
+}
 
 export default connector(DateComponent);

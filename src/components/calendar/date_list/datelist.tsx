@@ -18,7 +18,13 @@ export default class DateList extends React.Component
 
         return (
             <div className="calendar">
-                {Dates.map(date => <DateComponent Date={date.Date} key={date.key}></DateComponent>)}
+                {Dates.map((date, index) => <DateComponent Date={date.Date} ShowMonth={this.showMonth(date.Date, index)} key={date.key}></DateComponent>)}
             </div>);
+    }
+
+
+    private showMonth(date: Date, index: number)
+    {
+        return index === 0 || this.props.Dates[index - 1].Date.getMonth() !== date.getMonth(); 
     }
 }
