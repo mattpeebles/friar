@@ -2,6 +2,7 @@ import { connect, ConnectedProps } from 'react-redux'
 import React from 'react';
 import "./EarningsList.scss";
 import { selectStockSymbol } from "../../redux/actions";
+import EarningRow from './EarningRow';
 
 const mapState = (state: RootState, ownProps: IEarningsListProps) =>
 {
@@ -29,14 +30,37 @@ class EarningsList extends React.Component<Props, any>
 
     render()
     {
+        let columnList = ["Symbol", "Revenue Actual"]
+        let columnMap: EarningColMap = {
+            "Symbol": (er) => er.Symbol,
+            "Revenue Actual": (er) => er.revenueActual.toString()
+        }
+
+        let style = {
+            ["grid-template-columns" as any]: columnList.map(col => `calc(${100 / columnList.length}% - 12px)`).join(" ")
+        }
+
+        console.log(style)
         return (
             <div className="el-container">
                 <div>{this.props.SelectedDate?.toDateString()}</div>
-                <div className="el-list">
+
+                <div >
+                    <div className="el-list" style={style}>
+                        {columnList.map(col => (
+                            <div className="el-cell" key={col}>
+                                {col}
+                            </div>
+                        ))}
+                    </div>
                     {this.props.Earnings.map(earning =>
                         (
-                            <div key={earning.Symbol} onClick={() => this.handleOnSelected(earning)}>
-                                <div>{earning.Symbol}</div>
+                            <div className="el-list" style={style} onClick={() => this.handleOnSelected(earning)} key={earning.Symbol}>
+                                {columnList.map(col => (
+                                    <div className="el-cell" key={`${earning.Symbol}-${col}`}>
+                                        {columnMap[col](earning)}
+                                    </div>
+                                ))}
                             </div>
                         ))}
                 </div>
