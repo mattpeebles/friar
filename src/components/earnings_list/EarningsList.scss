@@ -10,7 +10,18 @@
         border: 1px solid gray;
     }
 
-    .el-list {
+
+    .el-row {
         display: grid;
+
+        &.el-stock-row {
+            cursor: pointer;
+
+        }
+
+        &.selected {
+            background-color: yellow;
+            ;
+        }
     }
 }

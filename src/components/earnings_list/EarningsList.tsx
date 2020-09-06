@@ -5,9 +5,12 @@ import { selectStockSymbol } from "../../redux/actions";
 
 const mapState = (state: RootState, ownProps: IEarningsListProps) =>
 {
-    return { SelectedDate: state.dates.selectedDate, Earnings: state?.earnings?.EarningsByDate[state?.dates?.selectedDate?.toISOString() ?? ""]?.Earnings ?? [] }
+    return {
+        SelectedSymbol: state.stocks.SelectedStock,
+        SelectedDate: state.dates.selectedDate, 
+        Earnings: state?.earnings?.EarningsByDate[state?.dates?.selectedDate?.toISOString() ?? ""]?.Earnings ?? []
+    }
 }
-
 
 const mapDispatch = { selectStockSymbol }
 
@@ -36,7 +39,7 @@ class EarningsList extends React.Component<Props, any>
         }
 
         let style = {
-            ["grid-template-columns" as any]: columnList.map(col => `calc(${100 / columnList.length}% - 12px)`).join(" ")
+            "gridTemplateColumns": columnList.map(col => `calc(${100 / columnList.length}%)`).join(" ")
         }
 
         return (
@@ -44,7 +47,7 @@ class EarningsList extends React.Component<Props, any>
                 <div>{this.props.SelectedDate?.toDateString()}</div>
 
                 <div >
-                    <div className="el-list" style={style}>
+                    <div className="el-row" style={style}>
                         {columnList.map(col => (
                             <div className="el-cell" key={col}>
                                 {col}
@@ -53,7 +56,7 @@ class EarningsList extends React.Component<Props, any>
                     </div>
                     {this.props.Earnings.map(earning =>
                         (
-                            <div className="el-list" style={style} onClick={() => this.handleOnSelected(earning)} key={earning.Symbol}>
+                            <div className={`el-stock-row el-row${earning.Symbol === this.props.SelectedSymbol ? " selected" : ""}`} style={style} onClick={() => this.handleOnSelected(earning)} key={earning.Symbol}>
                                 {columnList.map(col => (
                                     <div className="el-cell" key={`${earning.Symbol}-${col}`}>
                                         {columnMap[col](earning)}

@@ -5,6 +5,7 @@ import { addCompanyInfo } from "../../../redux/actions";
 
 import "./ticker.scss";
 import CompanyInfo from '../../company_info/CompanyInfo';
+import Price from '../../price/Price';
 
 const mapState = (state: RootState, ownProps: ITickerProps) =>
 {
@@ -27,7 +28,7 @@ type Props = ITickerProps & PropsFromRedux;
 class Ticker extends React.Component<Props, any>
 {
 
-    async componentDidUpdate()
+    async componentDidUpdate(prevProps: Props)
     {
         if (this.props.CompanyInfo === null || this.props.CompanyInfo === undefined)
         {
@@ -36,14 +37,13 @@ class Ticker extends React.Component<Props, any>
         }
     }
 
-    handleButtonClick()
-    {
 
-    }
 
     render()
     {
-        if(this.props.SelectedStock.IsNullOrEmpty()){
+
+        if (this.props.SelectedStock.IsNullOrEmpty())
+        {
             return (<div></div>);
         }
 
@@ -52,6 +52,7 @@ class Ticker extends React.Component<Props, any>
                 <div className="ticker-header-container">
                     <div className="ticker-symbol">{this.props.SelectedStock}</div>
                     <div className="ticker-name">{this.props.CompanyInfo?.name}</div>
+                    <Price />
                 </div>
 
                 <div className="ticker-body">
