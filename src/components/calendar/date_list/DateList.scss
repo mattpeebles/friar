@@ -4,6 +4,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 15px;
+    flex-grow: 1;
 
     &:first-child(){
         margin-left: 0;

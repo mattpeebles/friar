@@ -2,7 +2,7 @@ import React from "react";
 import Earnings from "../../../data/EarningsService";
 import { connect, ConnectedProps } from 'react-redux'
 import { selectDate, addEarningsByDate } from "../../../redux/actions";
-import {months } from "../../../utils/FriarExtensions";
+import { Constants } from "../../../utils/FriarExtensions";
 import "./date.scss";
 
 
@@ -57,14 +57,14 @@ class DateComponent extends React.Component<Props, any>
     render()
     {
         return (
-            <div className={`da-container${this.props.IsSelected ? " selected": ""}`} onClick={this.handleSelectDate}>
+            <div className={`da-container${this.props.IsSelected ? " selected" : ""}`} onClick={this.handleSelectDate}>
                 <div className="da-row">
                     <div className="da-day">
                         {this.props.Day}
                     </div>
                     {this.props.ShowMonth &&
                         <div className="da-month">
-                            {months[this.props.Month]}
+                            {Constants.Months[this.props.Month]}
                         </div>
                     }
                 </div>
