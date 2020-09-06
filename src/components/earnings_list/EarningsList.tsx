@@ -2,7 +2,6 @@ import { connect, ConnectedProps } from 'react-redux'
 import React from 'react';
 import "./EarningsList.scss";
 import { selectStockSymbol } from "../../redux/actions";
-import EarningRow from './EarningRow';
 
 const mapState = (state: RootState, ownProps: IEarningsListProps) =>
 {
@@ -40,7 +39,6 @@ class EarningsList extends React.Component<Props, any>
             ["grid-template-columns" as any]: columnList.map(col => `calc(${100 / columnList.length}% - 12px)`).join(" ")
         }
 
-        console.log(style)
         return (
             <div className="el-container">
                 <div>{this.props.SelectedDate?.toDateString()}</div>
